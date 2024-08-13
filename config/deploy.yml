@@ -1,8 +1,8 @@
 # Name of your application. Used to uniquely configure containers.
-service: kamal_project
+service: rails_kamal_project
 
 # Name of the container image.
-image: pratikingle09/kamal_project
+image: pratikingle09/rails_kamal_project
 
 # Deploy to these servers.
 servers:
