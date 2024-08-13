@@ -10,9 +10,9 @@ servers:
     hosts:
       - 3.110.155.145          # server for main app
     labels:
-      traefik.http.routers.deanout_secure.entrypoints: websecure
-      traefik.http.routers.deanout_secure.rule: Host(`kamaldeploy.videla.net`)
-      traefik.http.routers.deanout_secure.tls: true
+      traefik.http.routers.kamaldeploy_secure.entrypoints: websecure
+      traefik.http.routers.kamaldeploy_secure.rule: Host(`kamaldeploy.videla.net`)
+      traefik.http.routers.kamaldeploy_secure.tls: true
 
 
   workers:
