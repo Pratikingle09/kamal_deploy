@@ -28,6 +28,7 @@ registry:
 env:
   secret:
     - RAILS_MASTER_KEY
+    - SECRET_KEY_BASE
 
 ssh:
   keys:
