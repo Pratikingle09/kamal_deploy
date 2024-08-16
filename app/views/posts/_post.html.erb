@@ -1,12 +1,11 @@
-<div id="<%= dom_id post %>">
-  <p>
-    <strong>Title:</strong>
-    <%= post.title %>
+<div id="<%= dom_id post %>" style="background-color: #f8f9fa; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); margin-bottom: 20px;">
+  <p style="margin-bottom: 10px;">
+    <strong style="color: #007bff; font-size: 18px;">Title:</strong>
+    <span style="font-size: 18px; color: #343a40;"><%= post.title %></span>
   </p>
 
   <p>
-    <strong>Body:</strong>
-    <%= post.body %>
+    <strong style="color: #007bff; font-size: 18px;">Body:</strong>
+    <span style="font-size: 16px; color: #495057;"><%= post.body %></span>
   </p>
-
 </div>

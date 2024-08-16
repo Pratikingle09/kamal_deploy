@@ -1,10 +1,12 @@
-<p style="color: green"><%= notice %></p>
+<p style="color: #28a745; font-weight: bold; font-size: 16px; margin-bottom: 20px;"><%= notice %></p>
 
 <%= render @post %>
 
-<div>
-  <%= link_to "Edit this post", edit_post_path(@post) %> |
-  <%= link_to "Back to posts", posts_path %>
+<div style="margin-top: 20px; text-align: center;">
+  <%= link_to "Edit this post", edit_post_path(@post), style: "color: #007bff; text-decoration: none; font-size: 16px; font-weight: bold; margin-right: 15px;" %> |
+  <%= link_to "Back to posts", posts_path, style: "color: #6c757d; text-decoration: none; font-size: 16px; font-weight: bold; margin-left: 15px;" %>
 
-  <%= button_to "Destroy this post", @post, method: :delete %>
+  <div style="margin-top: 15px;">
+    <%= button_to "Destroy this post", @post, method: :delete, style: "background-color: #dc3545; color: #fff; padding: 10px 15px; border: none; border-radius: 5px; font-size: 16px; cursor: pointer; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);" %>
+  </div>
 </div>

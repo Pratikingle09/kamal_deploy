@@ -7,6 +7,9 @@ FROM registry.docker.com/library/ruby:$RUBY_VERSION-slim AS base
 # Rails app lives here
 WORKDIR /rails
 
+ENV SECRET_KEY_BASE = <%= ENV[SECRET_KEY_BASE]%>
+
+
 # Set production environment
 ENV RAILS_ENV="production" \
     BUNDLE_DEPLOYMENT="1" \
