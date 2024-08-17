@@ -1,8 +1,8 @@
 # Name of your application. Used to uniquely configure containers.
-service: rails_kamal_project
+service: kamal_project_rails
 
 # Name of the container image.
-image: pratikingle09/rails_kamal_project
+image: pratikingle09/kamal_project_rails
 
 # Deploy to these servers.
 servers:
@@ -42,7 +42,7 @@ volumes:
 healthcheck:
   path: /healthz
   port: 4000
-  
+
 
 # Configure rolling deploys by setting a wait time between batches of restarts.
 # boot:
