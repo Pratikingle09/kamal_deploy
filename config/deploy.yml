@@ -42,6 +42,7 @@ volumes:
 healthcheck:
   path: /healthz
   port: 4000
+  
 
 # Configure rolling deploys by setting a wait time between batches of restarts.
 # boot:
