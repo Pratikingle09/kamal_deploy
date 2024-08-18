@@ -39,9 +39,7 @@ volumes:
   - "storage:/rails/storage"
 
 # Configure custom healthcheck (default is /up on port 3000)
-healthcheck:
-  path: /healthz
-  port: 4000
+
 
 
 # Configure rolling deploys by setting a wait time between batches of restarts.
