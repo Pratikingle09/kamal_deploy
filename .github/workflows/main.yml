@@ -30,10 +30,18 @@ jobs:
           --tag pratikingle09/kamal_project_rails:latest \
           --push .   # The `--push` flag ensures the image is pushed to Docker Hub
 
-    - name: Install Kamal
+    - name: Download Kamal Binary
       run: |
-        curl -sL https://get.kamal.io | bash
-        mv ./kamal /usr/local/bin/kamal
+        curl -LO https://github.com/rails/kamal/releases/latest/download/kamal-linux-amd64
+        chmod +x kamal-linux-amd64
+        sudo mv kamal-linux-amd64 /usr/local/bin/kamal
+
+    - name: Verify Kamal Installation
+      run: |
+        if ! command -v kamal &> /dev/null; then
+          echo "Kamal installation failed."
+          exit 1
+        fi
 
     - name: Deploy to Kamal
       run: |
