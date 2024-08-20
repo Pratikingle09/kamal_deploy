@@ -33,7 +33,7 @@ jobs:
     - name: Install Kamal
       run: |
         curl -sL https://get.kamal.io | bash
-        sudo mv kamal /usr/local/bin/kamal
+        mv ./kamal /usr/local/bin/kamal
 
     - name: Deploy to Kamal
       run: |
