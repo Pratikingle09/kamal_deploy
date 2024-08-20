@@ -28,8 +28,7 @@ jobs:
         docker buildx build --platform linux/amd64 \
           --tag pratikingle09/kamal_project_rails:$IMAGE_TAG \
           --tag pratikingle09/kamal_project_rails:latest .
-        docker push pratikingle09/kamal_project_rails:$IMAGE_TAG
-        docker push pratikingle09/kamal_project_rails:latest
+          --push .   # The `--push` flag ensures the image is pushed to Docker Hub
         
     - name: Install Kamal
       run: |
