@@ -30,6 +30,11 @@ jobs:
           --tag pratikingle09/kamal_project_rails:latest .
         docker push pratikingle09/kamal_project_rails:$IMAGE_TAG
         docker push pratikingle09/kamal_project_rails:latest
+        
+    - name: Install Kamal
+      run: |
+        curl -sL https://get.kamal.io | bash
+        sudo mv kamal /usr/local/bin/kamal
 
     - name: Deploy to Kamal
       run: |
