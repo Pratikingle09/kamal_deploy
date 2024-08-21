@@ -29,13 +29,17 @@ jobs:
           --tag pratikingle09/kamal_project_rails:$IMAGE_TAG \
           --tag pratikingle09/kamal_project_rails:latest \
           --push .   # The `--push` flag ensures the image is pushed to Docker Hub
-
+          
+    - name: Install Kamal
+      run: |
+        gem install --user-install kamal
+        echo "::add-path::$HOME/.gem/ruby/3.0.0/bin"   # Ensure Kamal is in the PATH
 
     - name: Deploy to Kamal
       run: |
         kamal deploy \
           --image pratikingle09/kamal_project_rails:${{ github.sha }}
-      continue-on-error: true
+      continue-on-error: false
 
     - name: Rollback if deployment fails
       if: ${{ failure() }}
