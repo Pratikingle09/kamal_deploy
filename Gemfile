@@ -75,4 +75,3 @@ gem "sidekiq", "~> 7.3"
 
 gem "mysql2", "~> 0.5.6"
 
-gem 'dotenv-rails', groups: [:development]

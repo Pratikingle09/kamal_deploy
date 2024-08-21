@@ -22,7 +22,7 @@ FROM base AS build
 
 # Install packages needed to build gems and node modules
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y build-essential curl git libvips node-gyp pkg-config python-is-python3
+    apt-get install --no-install-recommends -y build-essential curl git libvips node-gyp pkg-config python-is-python3 mysql-client
 
 # Install JavaScript dependencies
 ARG NODE_VERSION=20.13.1
