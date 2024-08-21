@@ -9,6 +9,10 @@ servers:
   web:
     hosts:
       - 15.206.125.202          # server for main app
+    labels:
+      traefik.http.routers.rails_recipes.entrypoints: websecure
+      traefik.http.routers.rails_recipes.rule: Host(`kamaldeploy.localhosted.in`)
+      traefik.http.routers.rails_recipes.tls.certresolver: letsencrypt
 
   workers:
     hosts:
@@ -24,12 +28,30 @@ registry:
   password:
     - KAMAL_REGISTRY_PASSWORD
 
+traefik:
+  options:
+    publish:
+      - "443:443"
+    volume:
+      - "/letsencrypt/acme.json:/letsencrypt/acme.json"
+  args:
+    entryPoints.web.address: ":80"
+    entryPoints.websecure.address: ":443"
+    entryPoints.web.http.redirections.entryPoint.to: websecure
+    entryPoints.web.http.redirections.entryPoint.scheme: https
+    entryPoints.web.http.redirections.entrypoint.permanent: true
+    certificatesResolvers.letsencrypt.acme.email: "pratikingle66@gmail.com"
+    certificatesResolvers.letsencrypt.acme.storage: "/letsencrypt/acme.json"
+    certificatesResolvers.letsencrypt.acme.httpchallenge: true
+    certificatesResolvers.letsencrypt.acme.httpchallenge.entrypoint: web
+
+
 # Inject ENV variables into containers (secrets come from .env).
 env:
   secret:
     - RAILS_MASTER_KEY
     - SECRET_KEY_BASE
-    - MYSQL_PASSWORD
+    # - MYSQL_PASSWORD
 
 ssh:
   keys:
@@ -45,18 +67,18 @@ healthcheck:
   port: 3000
 
 # Define any accessory services (like PostgreSQL, Redis, etc.)
-accessories:
-  db:
-    image: mysql:8.0
-    host: mysql-1bf698da-pratikingle66-3f18.h.aivencloud.com
-    port: 18184
-    env:
-      clear:
-        MYSQL_DATABASE: ${MYSQL_DATABASE}
-        MYSQL_USER: ${MYSQL_USER}
-        MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-    volumes:
-      - "mysql_data:/var/lib/mysql"
+# accessories:
+#   db:
+#     image: mysql:8.0
+#     host: mysql-1bf698da-pratikingle66-3f18.h.aivencloud.com
+#     port: 18184
+#     env:
+#       clear:
+#         MYSQL_DATABASE: ${MYSQL_DATABASE}
+#         MYSQL_USER: ${MYSQL_USER}
+#         MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+#     volumes:
+#       - "mysql_data:/var/lib/mysql"
 
 
 
