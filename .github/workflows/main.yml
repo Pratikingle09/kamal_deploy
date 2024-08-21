@@ -31,7 +31,9 @@ jobs:
           --push .   # The `--push` flag ensures the image is pushed to Docker Hub
           
     - name: Install Kamal
-      run: gem install kamal
+      run: |
+        gem install --user-install kamal
+        echo "::add-path::$HOME/.gem/ruby/3.0.0/bin"   # Ensure Kamal is in the PATH
 
     - name: Deploy to Kamal
       run: |
