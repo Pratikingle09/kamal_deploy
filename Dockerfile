@@ -22,7 +22,7 @@ FROM base AS build
 
 #install required pkg for using mysql
 RUN apt-get update
-RUN apt-get install -qq -y mysql-server default-mysql-client libmysqlclient-dev
+RUN apt-get install -qq -y mysql-server default-mysql-client default-libmysqlclient-dev
 
 # Install packages needed to build gems and node modules
 RUN apt-get update -qq && \
