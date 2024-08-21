@@ -20,9 +20,13 @@ ENV RAILS_ENV="production" \
 # Throw-away build stage to reduce size of final image
 FROM base AS build
 
+#install required pkg for using mysql
+RUN apt-get update
+RUN apt-get install -qq -y mysql-server default-mysql-client libmysqlclient-dev
+
 # Install packages needed to build gems and node modules
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y build-essential curl git libvips node-gyp pkg-config python-is-python3 mysql-client-8.0 
+    apt-get install --no-install-recommends -y build-essential curl git libvips node-gyp pkg-config python-is-python3
 
 # Install JavaScript dependencies
 ARG NODE_VERSION=20.13.1
