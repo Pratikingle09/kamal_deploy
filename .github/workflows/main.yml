@@ -35,7 +35,7 @@ jobs:
       run: |
         kamal deploy \
           --image pratikingle09/kamal_project_rails:${{ github.sha }}
-      continue-on-error: true
+      continue-on-error: false
 
     - name: Rollback if deployment fails
       if: ${{ failure() }}
