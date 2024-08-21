@@ -29,7 +29,9 @@ jobs:
           --tag pratikingle09/kamal_project_rails:$IMAGE_TAG \
           --tag pratikingle09/kamal_project_rails:latest \
           --push .   # The `--push` flag ensures the image is pushed to Docker Hub
-
+          
+    - name: Install Kamal
+      run: gem install kamal
 
     - name: Deploy to Kamal
       run: |
