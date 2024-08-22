@@ -55,7 +55,7 @@ env:
 
 ssh:
   keys:
-    - config/kamal-deploy.pem
+    - ~/.ssh/id_rsa
   user: ubuntu
 
 volumes:
