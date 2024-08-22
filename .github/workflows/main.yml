@@ -25,6 +25,13 @@ jobs:
         echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
         echo "RAILS_MASTER_KEY=$RAILS_MASTER_KEY" >> .env
         echo "KAMAL_REGISTRY_PASSWORD=$KAMAL_REGISTRY_PASSWORD" >> .env
+        echo "SECRET_KEY_BASE=$SECRET_KEY_BASE" >> .env
+        echo "MYSQL_DATABASE=$MYSQL_DATABASE" >> .env
+        echo "MYSQL_HOST=$MYSQL_HOST" >> .env
+        echo "MYSQL_PASSWORD=$MYSQL_PASSWORD" >> .env
+        echo "MYSQL_USER=$MYSQL_USER" >> .env
+
+
         chmod 600 ~/.ssh/id_rsa
         ssh-keyscan 15.206.125.202 >> ~/.ssh/known_hosts || echo "Failed to add host"
         ssh-keyscan 3.110.49.102 >> ~/.ssh/known_hosts || echo "Failed to add host"
@@ -34,6 +41,11 @@ jobs:
         RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
         KAMAL_REGISTRY_PASSWORD: ${{ secrets.KAMAL_REGISTRY_PASSWORD }}
         SECRET_KEY_BASE: ${{secrets.SECRET_KEY_BASE}}
+        MYSQL_DATABASE: ${{secrets.MYSQL_DATABASE}}
+        MYSQL_HOST: ${{secrets.MYSQL_HOST}}
+        MYSQL_PASSWORD: ${{secrets.MYSQL_PASSWORD}}
+        MYSQL_USER: ${{secrets.MYSQL_USER}}
+
 
     - name: Kamal Deploy
       run: kamal deploy
