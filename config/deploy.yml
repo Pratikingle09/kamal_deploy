@@ -10,13 +10,9 @@ servers:
     hosts:
       - 15.206.125.202          # server for main app
     labels:
-      traefik.http.routers.kamaldeploy.entryPoints: websecure
-      traefik.http.routers.kamaldeploy.rule: Host(`kamaldeploy.localhosted.in`)
-      traefik.http.routers.kamaldeploy.tls.certresolver: letsencrypt
-      traefik.http.middlewares.headers.headers.customRequestHeaders.X-Real-IP: "{remote_addr}"
-      traefik.http.middlewares.headers.headers.customRequestHeaders.X-Forwarded-For: "{proxy_add_x_forwarded_for}"
-      traefik.http.middlewares.headers.headers.customRequestHeaders.X-Forwarded-Proto: "{scheme}"
-      traefik.http.routers.kamaldeploy.middlewares: headers
+      traefik.http.routers.kamaldeploy.entryPoints: "websecure"
+      traefik.http.routers.kamaldeploy.rule: "Host(`kamaldeploy.localhosted.in`)"
+      traefik.http.routers.kamaldeploy.tls.certresolver: "letsencrypt"
       # traefik.http.services.kamaldeploy.loadbalancer.server.port: "3000"
 
   workers:
@@ -43,13 +39,13 @@ traefik:
   args:
     entryPoints.web.address: ":80"
     entryPoints.websecure.address: ":443"
-    entryPoints.web.http.redirections.entryPoint.to: websecure
-    entryPoints.web.http.redirections.entryPoint.scheme: https
-    entryPoints.web.http.redirections.entryPoint.permanent: true
+    entryPoints.web.http.redirections.entryPoint.to: "websecure"
+    entryPoints.web.http.redirections.entryPoint.scheme: "https"
+    entryPoints.web.http.redirections.entryPoint.permanent: "true"
     certificatesResolvers.letsencrypt.acme.email: "pratikingle66@gmail.com"
     certificatesResolvers.letsencrypt.acme.storage: "/letsencrypt/acme.json"
-    certificatesResolvers.letsencrypt.acme.httpchallenge: true
-    certificatesResolvers.letsencrypt.acme.httpchallenge.entrypoint: web
+    certificatesResolvers.letsencrypt.acme.httpchallenge: "true"
+    certificatesResolvers.letsencrypt.acme.httpchallenge.entrypoint: "web"
 
 
 # Inject ENV variables into containers (secrets come from .env).
