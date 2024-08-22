@@ -20,10 +20,9 @@ ENV RAILS_ENV="production" \
 # Throw-away build stage to reduce size of final image
 FROM base AS build
 
-# Install packages needed for MySQL
-RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y libmariadb-dev-compat libmariadb-dev \
-    && rm -rf /var/lib/apt/lists/*
+#install required pkg for using mysql
+#  RUN apt-get update
+#  RUN apt-get install -qq -y mariadb-server mariadb-client default-libmysqlclient-dev
 
 # Install packages needed to build gems and node modules
 RUN apt-get update -qq && \
