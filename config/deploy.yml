@@ -10,9 +10,9 @@ servers:
     hosts:
       - 15.206.125.202          # server for main app
     labels:
-      traefik.http.routers.rails_recipes.entrypoints: websecure
-      traefik.http.routers.rails_recipes.rule: Host(`kamaldeploy.localhosted.in`)
-      traefik.http.routers.rails_recipes.tls.certresolver: letsencrypt
+      traefik.http.routers.kamaldeploy.entrypoints: websecure
+      traefik.http.routers.kamaldeploy.rule: Host(`kamaldeploy.localhosted.in`)
+      traefik.http.routers.kamaldeploy.tls.certresolver: letsencrypt
 
   workers:
     hosts:
