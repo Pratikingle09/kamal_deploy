@@ -51,7 +51,7 @@ env:
   secret:
     - RAILS_MASTER_KEY
     - SECRET_KEY_BASE
-    # - MYSQL_PASSWORD
+    # - MYSQL_PASSWORD 
 
 ssh:
   keys:
