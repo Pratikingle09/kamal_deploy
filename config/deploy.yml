@@ -13,11 +13,11 @@ servers:
       traefik.http.routers.kamaldeploy.entrypoints: websecure
       traefik.http.routers.kamaldeploy.rule: Host(`kamaldeploy.localhosted.in`)
       traefik.http.routers.kamaldeploy.tls.certresolver: letsencrypt
-      traefik.http.middlewares.headers.headers.customRequestHeaders.X-Real-IP: "{remote_addr}"
-      traefik.http.middlewares.headers.headers.customRequestHeaders.X-Forwarded-For: "{proxy_add_x_forwarded_for}"
-      traefik.http.middlewares.headers.headers.customRequestHeaders.X-Forwarded-Proto: "{scheme}"
-      traefik.http.routers.kamaldeploy.middlewares: headers
-      traefik.http.services.kamaldeploy.loadbalancer.server.port: "3000"
+      # traefik.http.middlewares.headers.headers.customRequestHeaders.X-Real-IP: "{remote_addr}"
+      # traefik.http.middlewares.headers.headers.customRequestHeaders.X-Forwarded-For: "{proxy_add_x_forwarded_for}"
+      # traefik.http.middlewares.headers.headers.customRequestHeaders.X-Forwarded-Proto: "{scheme}"
+      # traefik.http.routers.kamaldeploy.middlewares: headers
+      # traefik.http.services.kamaldeploy.loadbalancer.server.port: "3000"
 
   workers:
     hosts:
