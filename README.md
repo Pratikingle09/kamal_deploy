@@ -1,18 +1,18 @@
-# README
+# Deployment using kamla and traefik configuration for ssl certificate
 
-steps for deploying using #kamal and #traefik as a reverse proxy
+## steps for deploying using kamal and traefik as a reverse proxy
 
 1. install kamal gem.
-2. do 'kamal init'  which will give us all the required files for deployment.
+2. do `kamal init`  which will give us all the required files for deployment.
 3. make sure to add values to the .env variables which are already define in the .env file.
-4. start configuring the deploy.yml.
+4. start configuring the `deploy.yml`.
 5. after that run kamal setup which will setup the server for deployment and deploy our web app and worker to servers
-6. if kamal fails to deploy because of docker permission issue make sure to visit the server and add user to docker group by running "sudo usermod -aG docker <username>" after that logout and login to take effect.
+6. if kamal fails to deploy because of docker permission issue make sure to visit the server and add user to docker group by running `sudo usermod -aG docker <username>` after that logout and login to take effect.
 
 
 which will deploy our app on server and you will be able to see app online.but your app will be on http and not on https for that we have to configure traefik which is a reverse-proxy
 
-Traefik setup:
+### Traefik setup:
 lables to add in web service:
     
     labels:
@@ -20,7 +20,7 @@ lables to add in web service:
       traefik.http.routers.kamaldeploy.entryPoints: websecure
       traefik.http.routers.kamaldeploy.tls.certresolver: letsencrypt              
 
-configuration for traefik container with certificateresolvers:
+### configuration for traefik container with certificateresolvers:
 
     traefik:
       options:
@@ -54,7 +54,7 @@ by running cmd "chmod 600 /etc/letsencrypt/acme.json"
 
 5. now if you refresh the domain name you can see our app is running on https.
 
-#for one touch deployment.
+## for one touch deployment.
 
 1. make sure to add the env variable and ssh key for accessing the server on github secrets.
 
@@ -63,7 +63,9 @@ by running cmd "chmod 600 /etc/letsencrypt/acme.json"
 3. also change the path from the deploy.yml according to the ssh key stored in github action.
 
 4. if facing error while deployment on 
+```
   ERROR (Errno::ECONNRESET): Exceptions on 2 hosts:
-Exception while executing on host 15.206.125.202: Connection reset by peer - recvfrom(2)
-Exception while executing on host 3.110.49.102: Connection reset by peer - recvfrom(2)
+    Exception while executing on host 15.206.125.202: Connection reset by peer - recvfrom(2)
+    Exception while executing on host 3.110.49.102: Connection reset by peer - recvfrom(2)
+```
 please retry the deployment.
