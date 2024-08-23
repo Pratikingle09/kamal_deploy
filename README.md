@@ -22,22 +22,22 @@ lables to add in web service:
 
 configuration for traefik container with certificateresolvers:
 
-traefik:
-  options:
-    publish:
-      - "443:443"
-    volume:
-      - "/etc/letsencrypt/acme.json:/etc/letsencrypt/acme.json"    # make sure to create this manually befor deploying
-  args:
-    entryPoints.web.address: ":80"
-    entryPoints.websecure.address: ":443"
-    entryPoints.web.http.redirections.entryPoint.to: "websecure"
-    entryPoints.web.http.redirections.entryPoint.scheme: "https"
-    entryPoints.web.http.redirections.entryPoint.permanent: true
-    certificatesResolvers.letsencrypt.acme.email: "inglepratik0903@gmail.com"
-    certificatesResolvers.letsencrypt.acme.storage: "/etc/letsencrypt/acme.json"
-    certificatesResolvers.letsencrypt.acme.httpchallenge: true
-    certificatesResolvers.letsencrypt.acme.httpchallenge.entrypoint: "web"
+    traefik:
+      options:
+        publish:
+          - "443:443"
+        volume:
+          - "/etc/letsencrypt/acme.json:/etc/letsencrypt/acme.json"    # make sure to create this manually befor deploying
+      args:
+        entryPoints.web.address: ":80"
+        entryPoints.websecure.address: ":443"
+        entryPoints.web.http.redirections.entryPoint.to: "websecure"
+        entryPoints.web.http.redirections.entryPoint.scheme: "https"
+        entryPoints.web.http.redirections.entryPoint.permanent: true
+        certificatesResolvers.letsencrypt.acme.email: "inglepratik0903@gmail.com"
+        certificatesResolvers.letsencrypt.acme.storage: "/etc/letsencrypt/acme.json"
+        certificatesResolvers.letsencrypt.acme.httpchallenge: true
+        certificatesResolvers.letsencrypt.acme.httpchallenge.entrypoint: "web"
 
 1. go to the server itself create acme.json file on this path "/etc/letsencrypt/"
 steps for creating acme.json
