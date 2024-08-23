@@ -10,9 +10,9 @@ servers:
     hosts:
       - 15.206.125.202          # server for main app
     labels:
-      traefik.http.routers.kamaldeploy.rule: Host(`kamaldeploy.localhosted.in`)
+      traefik.http.routers.kamaldeploy.rule: Host(`kamaldeploy.localhosted.in`)   # make sure its in ``
       traefik.http.routers.kamaldeploy.entryPoints: websecure
-      traefik.http.routers.kamaldeploy.tls.certresolver: letsencrypt
+      traefik.http.routers.kamaldeploy.tls.certresolver: letsencrypt              # check if there is any ssl certificate if not will install one by using arg from traefik
 
   workers:
     hosts:
@@ -33,7 +33,7 @@ traefik:
     publish:
       - "443:443"
     volume:
-      - "/etc/letsencrypt/acme.json:/etc/letsencrypt/acme.json"
+      - "/etc/letsencrypt/acme.json:/etc/letsencrypt/acme.json"    # make sure to create this manually befor deploying
   args:
     entryPoints.web.address: ":80"
     entryPoints.websecure.address: ":443"
@@ -55,6 +55,7 @@ env:
 
 ssh:
   keys:
+    #- config/kamal-deploy.pem
     - ~/.ssh/id_rsa
   user: ubuntu
 
