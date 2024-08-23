@@ -79,7 +79,8 @@ please retry the deployment.
 
 3. Mysql2 for the secure connection connection [Reference](https://github.com/brianmario/mysql2?tab=readme-ov-file#ssltls-options)
 
-```Mysql2::Client.new(
+```
+Mysql2::Client.new(
   # ...options as above...,
   :sslkey => '/path/to/client-key.pem',
   :sslcert => '/path/to/client-cert.pem',
