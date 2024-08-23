@@ -73,4 +73,4 @@ gem "kamal", "~> 1.8"
 
 gem "sidekiq", "~> 7.3"
 
-gem "mysql2"
+
