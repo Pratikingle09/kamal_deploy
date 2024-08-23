@@ -52,12 +52,12 @@ env:
   secret:
     - RAILS_MASTER_KEY
     - SECRET_KEY_BASE
-   # - MYSQL_PASSWORD 
+    - MYSQL_PASSWORD 
 
 ssh:
   keys:
-    - config/kamal-deploy.pem
-    #- ~/.ssh/id_rsa
+    #- config/kamal-deploy.pem
+    - ~/.ssh/id_rsa
   user: ubuntu
 
 volumes:
@@ -69,19 +69,19 @@ healthcheck:
   port: 3000
 
 # Define any accessory services (like PostgreSQL, Redis, etc.)
-  # accessories:
-  #  db:
-  #    image: mysql:8.0
-  #    host: mysql-1bf698da-pratikingle66-3f18.h.aivencloud.com
-  #    port: 18184
-  #    env:
-  #      clear:
-  #        MYSQL_DATABASE: ${MYSQL_DATABASE}
-  #        MYSQL_USER: ${MYSQL_USER}
-  #        secret:
-  #          - MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-  #    volumes:
-  #      - "mysql_data:/var/lib/mysql"
+   accessories:
+    db:
+      image: mysql:8.0
+      host: mysql-1bf698da-pratikingle66-3f18.h.aivencloud.com
+      port: 18184
+      env:
+        clear:
+          MYSQL_DATABASE: ${MYSQL_DATABASE}
+          MYSQL_USER: ${MYSQL_USER}
+          secret:
+            - MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      volumes:
+        - "mysql_data:/var/lib/mysql"
 
 
 
