@@ -39,18 +39,18 @@ lables to add in web service:
         certificatesResolvers.letsencrypt.acme.httpchallenge: true
         certificatesResolvers.letsencrypt.acme.httpchallenge.entrypoint: "web"
 
-1. go to the server itself create acme.json file on this path "/etc/letsencrypt/"
-steps for creating acme.json
-run cmd "mkdir /etc/letsencrypt"
-run cmd "touch /etc/letsencrypt/acme.json"
+1. go to the server itself create acme.json file on this path `/etc/letsencrypt/`
+steps for creating `acme.json`
+run cmd `mkdir /etc/letsencrypt`
+run cmd `touch /etc/letsencrypt/acme.json`
 make sure to give only required permissions
-by running cmd "chmod 600 /etc/letsencrypt/acme.json"
+by running cmd `chmod 600 /etc/letsencrypt/acme.json`
 
 2. after that add traefik configuration inside deploy.yml file make sure the path given for acme.json file is correct.
 
-3. Now reboot the traefik instance by running cmd "kamal traefik reboot" then answer yes
+3. Now reboot the traefik instance by running cmd `kamal traefik reboot` then answer yes
 
-4. rebbot the web app container for setup to take effect run cmd "kamal app boot --roles=web"
+4. rebbot the web app container for setup to take effect run cmd `kamal app boot --roles=web`
 
 5. now if you refresh the domain name you can see our app is running on https.
 

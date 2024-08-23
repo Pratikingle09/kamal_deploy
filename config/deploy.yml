@@ -13,7 +13,8 @@ servers:
       traefik.http.routers.kamaldeploy.rule: Host(`kamaldeploy.localhosted.in`)   # make sure its in ``
       traefik.http.routers.kamaldeploy.entryPoints: websecure
       traefik.http.routers.kamaldeploy.tls.certresolver: letsencrypt              # check if there is any ssl certificate if not will install one by using arg from traefik
-
+      traefik.http.middlewares.kamaldeploy-compress.compress: true
+      traefik.http.routers.kamaldeploy.middlewares: kamaldeploy-compress
   workers:
     hosts:
       - 3.110.49.102       # server for running jobs
@@ -55,8 +56,8 @@ env:
 
 ssh:
   keys:
-    #- config/kamal-deploy.pem
-    - ~/.ssh/id_rsa
+    - config/kamal-deploy.pem
+    #- ~/.ssh/id_rsa
   user: ubuntu
 
 volumes:
