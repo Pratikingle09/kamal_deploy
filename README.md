@@ -69,3 +69,24 @@ by running cmd `chmod 600 /etc/letsencrypt/acme.json`
     Exception while executing on host 3.110.49.102: Connection reset by peer - recvfrom(2)
 ```
 please retry the deployment.
+
+## Should connect to encrypted database (MYSQL)
+
+### set up an SSL connection between your Rails app and MySQL:
+1. MySQL supports secure (encrypted) connections between MySQL clients and the server using the Secure Sockets Layer (SSL) protocol. [Reference](https://dev.mysql.com/doc/mysql-secure-deployment-guide/8.0/en/secure-deployment-secure-connections.html)
+
+2. ActiveRecord has options for SSL security (:sslkey and others in database.yml).
+
+3. Mysql2 for the secure connection connection [Reference](https://github.com/brianmario/mysql2?tab=readme-ov-file#ssltls-options)
+
+```Mysql2::Client.new(
+  # ...options as above...,
+  :sslkey => '/path/to/client-key.pem',
+  :sslcert => '/path/to/client-cert.pem',
+  :sslca => '/path/to/ca-cert.pem',
+  :sslcapath => '/path/to/cacerts',
+  :sslcipher => 'DHE-RSA-AES256-SHA',
+  :sslverify => true, # Removed in MySQL 8.0
+  :ssl_mode => :disabled / :preferred / :required / :verify_ca / :verify_identity,
+  )```
+
