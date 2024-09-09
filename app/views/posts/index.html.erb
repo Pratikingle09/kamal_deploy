@@ -1,18 +1,20 @@
-<p style="color: green"><%= notice %></p>
+<p style="color: #28a745; font-weight: bold; font-size: 16px; margin-bottom: 20px;"><%= notice %></p>
 
-<h1>Jobs</h1>
+<h1 style="color: #007bff; font-family: 'Arial', sans-serif; text-align: center; margin-bottom: 30px;">Jobs</h1>
 
-<%= button_to "testing job 1", hello_path, remote: true %>
+<%= button_to "Testing Job 1", hello_path, remote: true, style: "background-color: #ffc107; color: #fff; padding: 12px 20px; border-radius: 8px; border: none; font-size: 16px; cursor: pointer; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);" %>
 
-<h1>Posts</h1>
+<h1 style="color: #dc3545; font-family: 'Georgia', serif; text-align: center; margin-top: 40px; margin-bottom: 20px;">Posts</h1>
 
-<div id="posts">
+<div id="posts" style="margin-bottom: 30px;">
   <% @posts.each do |post| %>
-    <%= render post %>
-    <p>
-      <%= link_to "Show this post", post %>
-    </p>
+    <div style="padding: 15px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);">
+      <%= render post %>
+      <p style="font-size: 18px; color: #6c757d; margin-top: 10px;">
+        <%= link_to "Show this post", post, style: "color: #007bff; text-decoration: none; font-weight: bold;" %>
+      </p>
+    </div>
   <% end %>
 </div>
 
-<%= link_to "New post", new_post_path %>
+<%= link_to "New Post", new_post_path, style: "display: inline-block; color: #fff; background-color: #28a745; padding: 12px 20px; border-radius: 8px; text-decoration: none; font-size: 16px; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); margin-top: 20px;" %>

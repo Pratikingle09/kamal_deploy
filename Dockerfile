@@ -1,11 +1,14 @@
 # syntax = docker/dockerfile:1
 
 # Make sure RUBY_VERSION matches the Ruby version in .ruby-version and Gemfile
-ARG RUBY_VERSION=3.3.0
-FROM registry.docker.com/library/ruby:$RUBY_VERSION-slim as base
+ARG RUBY_VERSION=3.2.3
+FROM registry.docker.com/library/ruby:$RUBY_VERSION-slim AS base
 
 # Rails app lives here
 WORKDIR /rails
+
+ENV SECRET_KEY_BASE = <%= ENV[SECRET_KEY_BASE]%>
+
 
 # Set production environment
 ENV RAILS_ENV="production" \
@@ -15,7 +18,11 @@ ENV RAILS_ENV="production" \
 
 
 # Throw-away build stage to reduce size of final image
-FROM base as build
+FROM base AS build
+
+#install required pkg for using mysql
+#  RUN apt-get update
+#  RUN apt-get install -qq -y mariadb-server mariadb-client default-libmysqlclient-dev
 
 # Install packages needed to build gems and node modules
 RUN apt-get update -qq && \
@@ -29,6 +36,9 @@ RUN curl -sL https://github.com/nodenv/node-build/archive/master.tar.gz | tar xz
     /tmp/node-build-master/bin/node-build "${NODE_VERSION}" /usr/local/node && \
     npm install -g yarn@$YARN_VERSION && \
     rm -rf /tmp/node-build-master
+
+# Install specific Bundler version
+RUN gem install bundler -v 2.5.11
 
 # Install application gems
 COPY Gemfile Gemfile.lock ./
