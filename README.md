@@ -2,12 +2,12 @@
 
 ## steps for deploying using kamal and traefik as a reverse proxy
 
-1. install kamal gem.
-2. do `kamal init`  which will give us all the required files for deployment.
-3. make sure to add values to the .env variables which are already define in the .env file.
-4. start configuring the `deploy.yml`.
-5. after that run kamal setup which will setup the server for deployment and deploy our web app and worker to servers
-6. if kamal fails to deploy because of docker permission issue make sure to visit the server and add user to docker group by running `sudo usermod -aG docker <username>` after that logout and login to take effect.
+1. Install kamal gem.
+2. Do `kamal init`  which will give us all the required files for deployment.
+3. Make sure to add values to the .env variables which are already define in the .env file.
+4. Start configuring the `deploy.yml`.
+5. After that run kamal setup which will setup the server for deployment and deploy our web app and worker to servers
+6. If kamal fails to deploy because of docker permission issue make sure to visit the server and add user to docker group by running `sudo usermod -aG docker <username>` after that logout and login to take effect.
 
 
 which will deploy our app on server and you will be able to see app online.but your app will be on http and not on https for that we have to configure traefik which is a reverse-proxy
